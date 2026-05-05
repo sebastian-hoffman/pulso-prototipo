@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulso — El ritmo de tu negocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p:#22C997;--p-dark:#1aaa7e;--p-bg:#f0fdf8;--p-border:#b2f0dc;
+  --night:#080B12;--ink:#1C2333;--ink2:#2d3748;
+  --muted:#6B7280;--light:#F0F4FF;
+  --amber:#F59E0B;--red:#EF4444;
+  --radius:10px;--radius-lg:14px;
+}
+html,body{height:100%;font-family:'Syne',sans-serif;background:#f8f9fc}
+body{display:flex;flex-direction:column;min-height:100vh}
+
+.screen{display:none;flex:1;flex-direction:column;animation:fadeIn .18s ease}
+.screen.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* NAV PILLS */
+.nav-pills{display:flex;gap:4px;padding:10px 20px;background:#fff;border-bottom:1px solid #e5e7eb;align-items:center;flex-shrink:0;flex-wrap:wrap}
+.nav-pill{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);font-family:'Syne',sans-serif;transition:all .15s}
+.nav-pill:hover{background:#f3f4f6;color:var(--ink)}
+.nav-pill.on{background:var(--night);color:#fff}
+.nav-sep{width:1px;height:18px;background:#e5e7eb;margin:0 4px}
+
+/* ── LANDING ── */
+#s-landing{background:var(--night);min-height:100vh}
+.lnd-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 48px;border-bottom:1px solid #1c2333}
+.lnd-logo{display:flex;align-items:center;gap:10px}
+.lnd-logo-icon{width:34px;height:34px;background:var(--p);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.lnd-logo-name{font-size:22px;font-weight:700;color:#fff;letter-spacing:-0.5px}
+.lnd-nav-links{display:flex;gap:24px;align-items:center}
+.lnd-nav-links a{font-size:13px;color:#9ca3af;cursor:pointer;text-decoration:none;font-family:'Syne',sans-serif;transition:color .15s}
+.lnd-nav-links a:hover{color:#fff}
+.btn-outline-w{padding:8px 20px;border:1px solid #374151;border-radius:20px;color:#fff;font-size:13px;font-weight:600;cursor:pointer;background:transparent;font-family:'Syne',sans-serif;transition:all .15s}
+.btn-outline-w:hover{background:#1c2333}
+.btn-green{padding:9px 22px;border-radius:20px;background:var(--p);color:var(--night);font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Syne',sans-serif;transition:background .15s}
+.btn-green:hover{background:var(--p-dark)}
+.lnd-hero{padding:80px 48px 48px;text-align:center;max-width:800px;margin:0 auto;width:100%}
+.lnd-badge{display:inline-block;padding:5px 16px;border-radius:20px;border:1px solid #22c99740;color:var(--p);font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:28px}
+.lnd-h1{font-size:56px;font-weight:800;color:#fff;line-height:1.08;letter-spacing:-2px;margin-bottom:20px}
+.lnd-h1 span{color:var(--p)}
+.lnd-sub{font-size:16px;color:#9ca3af;max-width:500px;margin:0 auto 36px;line-height:1.65;font-weight:400}
+.lnd-btns{display:flex;gap:14px;justify-content:center;margin-bottom:64px}
+.btn-green-lg{padding:15px 32px;border-radius:28px;background:var(--p);color:var(--night);font-size:15px;font-weight:700;cursor:pointer;border:none;font-family:'Syne',sans-serif;transition:background .15s}
+.btn-green-lg:hover{background:var(--p-dark)}
+.btn-ghost-lg{padding:15px 32px;border-radius:28px;background:transparent;color:#9ca3af;font-size:15px;font-weight:600;cursor:pointer;border:1px solid #374151;font-family:'Syne',sans-serif;transition:all .15s}
+.btn-ghost-lg:hover{color:#fff;border-color:#6b7280}
+.lnd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1c2333;border-radius:var(--radius-lg);overflow:hidden;margin:0 48px 48px}
+.lnd-feat{background:#0d1117;padding:28px;display:flex;flex-direction:column;gap:10px}
+.lnd-feat-icon{width:40px;height:40px;border-radius:10px;background:#0d2218;display:flex;align-items:center;justify-content:center;color:var(--p);font-size:20px;margin-bottom:6px}
+.lnd-feat h3{font-size:15px;font-weight:700;color:#fff}
+.lnd-feat p{font-size:13px;color:#6b7280;line-height:1.55;font-weight:400}
+.lnd-logos-section{padding:0 48px 48px;text-align:center}
+.lnd-logos-label{font-size:11px;font-weight:600;color:#4b5563;letter-spacing:2px;margin-bottom:16px}
+.lnd-logos{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.lnd-logo-tag{font-size:12px;font-weight:600;color:#9ca3af;padding:7px 18px;border:1px solid #1c2333;border-radius:20px}
+
+/* ── AUTH ── */
+#s-auth{flex-direction:row!important;min-height:100vh}
+.auth-left{flex:1;background:var(--night);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:48px;gap:28px}
+.auth-left-logo{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.auth-tagline{font-size:30px;font-weight:700;color:#fff;text-align:center;letter-spacing:-0.5px;line-height:1.2}
+.auth-tagline span{color:var(--p)}
+.auth-stat{background:#0d1117;border-radius:var(--radius);padding:16px 22px;border:1px solid #1c2333;width:100%;max-width:280px}
+.auth-stat-label{font-size:10px;font-weight:700;color:var(--p);letter-spacing:2px;margin-bottom:6px}
+.auth-stat-val{font-family:'DM Mono',monospace;font-size:24px;font-weight:500;color:#fff}
+.auth-stat-sub{font-size:12px;color:#4b5563;margin-top:4px}
+.auth-right{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:48px;background:#f8f9fc}
+.auth-card{background:#fff;border-radius:var(--radius-lg);border:1px solid #e5e7eb;padding:36px;width:100%;max-width:360px}
+.auth-tabs{display:flex;margin-bottom:28px;border:1px solid #e5e7eb;border-radius:9px;overflow:hidden}
+.auth-tab{flex:1;padding:10px;font-size:13px;font-weight:600;cursor:pointer;text-align:center;border:none;font-family:'Syne',sans-serif;background:#f9fafb;color:var(--muted);transition:all .15s}
+.auth-tab.on{background:var(--night);color:#fff}
+.auth-field{margin-bottom:16px}
+.auth-field label{font-size:12px;font-weight:700;color:var(--ink);display:block;margin-bottom:6px}
+.auth-field input{width:100%;padding:10px 14px;border:1px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:'Syne',sans-serif;background:#f9fafb;color:var(--ink);outline:none;transition:border-color .15s}
+.auth-field input:focus{border-color:var(--p);background:#fff}
+.btn-green-full{width:100%;padding:12px;border-radius:9px;background:var(--p);color:var(--night);font-size:14px;font-weight:700;cursor:pointer;border:none;font-family:'Syne',sans-serif;margin-top:6px;transition:background .15s}
+.btn-green-full:hover{background:var(--p-dark)}
+.auth-divider{text-align:center;font-size:11px;color:var(--muted);margin:16px 0;position:relative}
+.auth-divider::before,.auth-divider::after{content:'';position:absolute;top:50%;width:42%;height:1px;background:#e5e7eb}
+.auth-divider::before{left:0}.auth-divider::after{right:0}
+.btn-outline-full{width:100%;padding:11px;border-radius:9px;background:#fff;color:var(--ink);font-size:13px;font-weight:600;cursor:pointer;border:1px solid #e5e7eb;font-family:'Syne',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .15s}
+.btn-outline-full:hover{background:#f9fafb}
+.auth-legal{font-size:11px;color:#9ca3af;margin-top:16px;text-align:center;line-height:1.5}
+
+/* ── APP SHELL ── */
+.app-header{display:flex;justify-content:space-between;align-items:center;padding:13px 28px;background:#fff;border-bottom:1px solid #e5e7eb;flex-shrink:0}
+.app-logo{display:flex;align-items:center;gap:9px;cursor:pointer}
+.app-logo-icon{width:30px;height:30px;background:var(--p);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.app-logo-name{font-size:18px;font-weight:700;color:var(--night);letter-spacing:-0.5px}
+.app-nav{display:flex;gap:2px}
+.app-nav-item{padding:7px 15px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted);transition:all .15s;font-family:'Syne',sans-serif;white-space:nowrap}
+.app-nav-item:hover{background:#f3f4f6;color:var(--ink)}
+.app-nav-item.on{background:var(--p-bg);color:var(--p-dark)}
+.app-right{display:flex;align-items:center;gap:12px}
+.app-avatar{width:32px;height:32px;border-radius:50%;background:var(--p);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--night);cursor:pointer}
+
+/* ── DASHBOARD ── */
+#s-dash{flex-direction:column!important}
+.dash-main{flex:1;padding:24px 28px;overflow-y:auto;background:#f8f9fc}
+.dash-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px}
+.dash-greeting{font-size:20px;font-weight:700;color:var(--night)}
+.dash-date{font-size:12px;color:var(--muted);margin-top:3px;font-weight:400}
+.dash-period{display:flex;gap:5px}
+.period-btn{padding:6px 14px;border-radius:16px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid #e5e7eb;background:#fff;color:var(--muted);font-family:'Syne',sans-serif;transition:all .15s}
+.period-btn:hover{border-color:#d1d5db;color:var(--ink)}
+.period-btn.on{background:var(--night);color:#fff;border-color:var(--night)}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:22px}
+.kpi{background:#fff;border-radius:var(--radius);border:1px solid #e5e7eb;padding:18px}
+.kpi-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.5px;margin-bottom:10px;text-transform:uppercase}
+.kpi-val{font-family:'DM Mono',monospace;font-size:24px;font-weight:500;color:var(--night)}
+.kpi-change{font-size:11px;font-weight:600;margin-top:6px}
+.up{color:#22c997}.down{color:var(--red)}
+.charts-row{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:22px}
+.chart-card{background:#fff;border-radius:var(--radius);border:1px solid #e5e7eb;padding:18px}
+.chart-title{font-size:13px;font-weight:700;color:var(--night);margin-bottom:16px}
+.chart-area{height:160px;display:flex;align-items:flex-end;gap:6px}
+.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;justify-content:flex-end}
+.bar{width:100%;border-radius:4px 4px 0 0;background:#e0fdf4;transition:background .15s;cursor:pointer}
+.bar:hover{background:#b2f0dc}
+.bar.hi{background:var(--p)}
+.bar.hi:hover{background:var(--p-dark)}
+.bar-lbl{font-size:10px;color:#9ca3af;font-family:'Syne',sans-serif;font-weight:600}
+.donut-wrap{display:flex;flex-direction:column;gap:12px;justify-content:center;height:160px}
+.donut-row{display:flex;align-items:center;gap:10px}
+.donut-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.donut-lbl{font-size:12px;color:var(--muted);flex:1}
+.donut-pct{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--night)}
+.orders-card{background:#fff;border-radius:var(--radius);border:1px solid #e5e7eb;padding:18px}
+.orders-title{font-size:13px;font-weight:700;color:var(--night);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.orders-title span{font-size:12px;font-weight:600;color:var(--p);cursor:pointer}
+.order-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f3f4f6}
+.order-row:last-child{border-bottom:none}
+.order-id{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);width:68px;flex-shrink:0}
+.order-name{font-size:13px;font-weight:600;color:var(--night);flex:1}
+.order-store{font-size:11px;color:var(--muted);width:110px;flex-shrink:0}
+.order-amt{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--night);width:72px;text-align:right;flex-shrink:0}
+.order-status{font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;flex-shrink:0}
+.status-ok{background:#f0fdf8;color:#1aaa7e}
+.status-pend{background:#fffbeb;color:#b45309}
+
+/* ── INTEGRACIONES ── */
+#s-integ{flex-direction:column!important}
+.integ-body{flex:1;padding:28px;background:#f8f9fc;overflow-y:auto}
+.integ-header{margin-bottom:28px}
+.integ-title{font-size:22px;font-weight:700;color:var(--night)}
+.integ-sub{font-size:14px;color:var(--muted);margin-top:5px;font-weight:400}
+.integ-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.integ-card{background:#fff;border-radius:var(--radius-lg);border:1px solid #e5e7eb;padding:22px;transition:border-color .15s}
+.integ-card.connected{border-color:var(--p-border);background:var(--p-bg)}
+.integ-card-top{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.integ-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
+.integ-name{font-size:16px;font-weight:700;color:var(--night)}
+.integ-desc{font-size:12px;color:var(--muted);margin-top:2px;font-weight:400}
+.integ-badge{margin-left:auto;font-size:10px;font-weight:700;padding:4px 11px;border-radius:10px;flex-shrink:0}
+.badge-on{background:#f0fdf8;color:#1aaa7e}
+.badge-off{background:#f3f4f6;color:var(--muted)}
+.integ-meta{font-size:12px;color:var(--muted);margin-bottom:16px;font-weight:400;line-height:1.5}
+.integ-meta strong{color:var(--night);font-weight:600}
+.integ-actions{display:flex;gap:10px}
+.btn-connect{padding:9px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;transition:all .15s;border:none}
+.btn-connect-green{background:var(--p);color:var(--night)}
+.btn-connect-green:hover{background:var(--p-dark)}
+.btn-disconnect{background:transparent;color:var(--muted);border:1px solid #e5e7eb;padding:9px 18px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Syne',sans-serif;transition:all .15s}
+.btn-disconnect:hover{color:var(--red);border-color:#fca5a5}
+
+/* ── PLANES ── */
+#s-plans{flex-direction:column!important}
+.plans-body{flex:1;padding:28px;background:#f8f9fc;overflow-y:auto}
+.plans-header{text-align:center;margin-bottom:32px}
+.plans-title{font-size:28px;font-weight:800;color:var(--night);letter-spacing:-0.8px}
+.plans-sub{font-size:14px;color:var(--muted);margin-top:8px;font-weight:400}
+.plans-toggle{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px}
+.toggle-label{font-size:13px;font-weight:600;color:var(--muted)}
+.toggle-label.on{color:var(--night)}
+.toggle-track{width:44px;height:24px;background:var(--p);border-radius:12px;cursor:pointer;display:flex;align-items:center;padding:3px;transition:background .15s}
+.toggle-thumb{width:18px;height:18px;background:#fff;border-radius:50%;margin-left:auto;transition:margin .2s}
+.toggle-track.off{background:#d1d5db}
+.toggle-track.off .toggle-thumb{margin-left:0}
+.save-badge{background:#f0fdf8;color:#1aaa7e;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;margin-left:6px}
+.plans-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px}
+.plan-card{background:#fff;border-radius:var(--radius-lg);border:1px solid #e5e7eb;padding:28px;display:flex;flex-direction:column}
+.plan-card.featured{background:var(--night);border-color:var(--night)}
+.plan-pop-badge{font-size:10px;font-weight:700;padding:4px 12px;border-radius:10px;background:var(--p);color:var(--night);display:inline-block;margin-bottom:12px;width:fit-content}
+.plan-name{font-size:20px;font-weight:800;color:var(--night);margin-bottom:6px}
+.plan-card.featured .plan-name{color:#fff}
+.plan-price{font-family:'DM Mono',monospace;font-size:36px;font-weight:500;color:var(--night);margin:10px 0 4px}
+.plan-card.featured .plan-price{color:#fff}
+.plan-period{font-size:12px;color:var(--muted);margin-bottom:20px;font-weight:400}
+.plan-card.featured .plan-period{color:#9ca3af}
+.plan-divider{height:1px;background:#e5e7eb;margin-bottom:20px}
+.plan-card.featured .plan-divider{background:#1c2333}
+.plan-features{display:flex;flex-direction:column;gap:11px;margin-bottom:24px;flex:1}
+.plan-feat{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink);font-weight:400}
+.plan-card.featured .plan-feat{color:#d1d5db}
+.plan-feat i{font-size:15px;color:var(--p);flex-shrink:0}
+.plan-feat.no i{color:#d1d5db}
+.plan-feat.no{color:var(--muted)}
+.plan-card.featured .plan-feat.no{color:#4b5563}
+.btn-plan{width:100%;padding:12px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;border:none;transition:all .15s}
+.btn-plan-outline{background:transparent;color:var(--night);border:1px solid #e5e7eb;border-radius:9px;width:100%;padding:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;transition:all .15s}
+.btn-plan-outline:hover{background:#f9fafb}
+.btn-plan-green{background:var(--p);color:var(--night)}
+.btn-plan-green:hover{background:var(--p-dark)}
+.btn-plan-white{background:#fff;color:var(--night)}
+.btn-plan-white:hover{background:#f0f4ff}
+.plans-faq{background:#fff;border-radius:var(--radius-lg);border:1px solid #e5e7eb;padding:24px;margin-bottom:12px}
+.faq-title{font-size:15px;font-weight:700;color:var(--night);margin-bottom:16px}
+.faq-row{padding:12px 0;border-bottom:1px solid #f3f4f6;cursor:pointer}
+.faq-row:last-child{border-bottom:none;padding-bottom:0}
+.faq-q{font-size:13px;font-weight:600;color:var(--night);display:flex;justify-content:space-between;align-items:center}
+.faq-a{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.6;font-weight:400}
+
+/* PULSE ICON SVG */
+.pulse-svg{display:block}
+</style>
+</head>
+<body>
+
+<!-- NAV PILLS -->
+<div class="nav-pills">
+  <button class="nav-pill on" onclick="go('landing')">1 · Landing</button>
+  <div class="nav-sep"></div>
+  <button class="nav-pill" onclick="go('auth')">2 · Registro</button>
+  <div class="nav-sep"></div>
+  <button class="nav-pill" onclick="go('dash')">3 · Dashboard</button>
+  <div class="nav-sep"></div>
+  <button class="nav-pill" onclick="go('integ')">4 · Integraciones</button>
+  <div class="nav-sep"></div>
+  <button class="nav-pill" onclick="go('plans')">5 · Planes</button>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  LANDING                                  -->
+<!-- ══════════════════════════════════════════ -->
+<div id="s-landing" class="screen active">
+  <nav class="lnd-nav">
+    <div class="lnd-logo">
+      <div class="lnd-logo-icon">
+        <svg class="pulse-svg" width="22" height="14" viewBox="0 0 22 14" fill="none">
+          <polyline points="0,7 3,7 5,1.5 8,12.5 11,0 14,11 16.5,4 19,7 22,7" stroke="#080B12" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="lnd-logo-name">pulso</span>
+    </div>
+    <div class="lnd-nav-links">
+      <a onclick="go('plans')">Precios</a>
+      <a href="#">Documentación</a>
+      <a href="#">Blog</a>
+      <button class="btn-outline-w" onclick="go('auth')">Iniciar sesión</button>
+      <button class="btn-green" onclick="go('auth')">Empezar gratis</button>
+    </div>
+  </nav>
+  <div style="flex:1;overflow-y:auto">
+    <div class="lnd-hero">
+      <div class="lnd-badge">NUEVO · AHORA CON META ADS</div>
+      <h1 class="lnd-h1">El ritmo de tu<br><span>negocio</span>, en tiempo real</h1>
+      <p class="lnd-sub">Conectá tu Shopify, TiendaNube, MercadoPago y Meta Ads en minutos. Un solo dashboard con tus órdenes, costos y ROAS.</p>
+      <div class="lnd-btns">
+        <button class="btn-green-lg" onclick="go('auth')">Empezar gratis →</button>
+        <button class="btn-ghost-lg" onclick="go('plans')">Ver planes</button>
+      </div>
+    </div>
+    <div class="lnd-grid">
+      <div class="lnd-feat">
+        <div class="lnd-feat-icon"><i class="ti ti-bolt"></i></div>
+        <h3>Sync en tiempo real</h3>
+        <p>Datos de tus tiendas actualizados al instante vía webhooks. Sin esperar, sin recargar.</p>
+      </div>
+      <div class="lnd-feat">
+        <div class="lnd-feat-icon"><i class="ti ti-chart-bar"></i></div>
+        <h3>ROAS y contribución neta</h3>
+        <p>Calculamos tu margen cruzando ventas, costos y gasto en ads automáticamente.</p>
+      </div>
+      <div class="lnd-feat">
+        <div class="lnd-feat-icon"><i class="ti ti-users"></i></div>
+        <h3>Equipo y roles</h3>
+        <p>Invitá a tu contador o equipo de marketing con acceso controlado a tus datos.</p>
+      </div>
+    </div>
+    <div class="lnd-logos-section">
+      <div class="lnd-logos-label">INTEGRACIONES DISPONIBLES</div>
+      <div class="lnd-logos">
+        <div class="lnd-logo-tag">Shopify</div>
+        <div class="lnd-logo-tag">TiendaNube</div>
+        <div class="lnd-logo-tag">MercadoPago</div>
+        <div class="lnd-logo-tag">Meta Ads</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  AUTH                                     -->
+<!-- ══════════════════════════════════════════ -->
+<div id="s-auth" class="screen" style="flex-direction:row;min-height:calc(100vh - 45px)">
+  <div class="auth-left">
+    <div class="auth-left-logo">
+      <div style="width:40px;height:40px;background:#22c997;border-radius:10px;display:flex;align-items:center;justify-content:center">
+        <svg width="24" height="15" viewBox="0 0 24 15" fill="none">
+          <polyline points="0,7.5 3.5,7.5 5.5,1.5 8.5,13.5 12,0 15.5,12 18,4 20.5,7.5 24,7.5" stroke="#080B12" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span style="font-size:24px;font-weight:700;color:#fff;letter-spacing:-0.5px">pulso</span>
+    </div>
+    <p class="auth-tagline">Tu negocio,<br><span>siempre en pulso</span></p>
+    <div class="auth-stat">
+      <div class="auth-stat-label">CONTRIBUCIÓN NETA · HOY</div>
+      <div class="auth-stat-val">$84.320</div>
+      <div class="auth-stat-sub" style="color:#22c997;font-weight:600">▲ 12,4% vs semana anterior</div>
+    </div>
+    <div class="auth-stat">
+      <div class="auth-stat-label">ROAS PROMEDIO</div>
+      <div class="auth-stat-val">×3.8</div>
+      <div class="auth-stat-sub">Meta Ads · última semana</div>
+    </div>
+  </div>
+  <div class="auth-right">
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <button class="auth-tab on" id="tab-reg" onclick="switchTab('reg')">Crear cuenta</button>
+        <button class="auth-tab" id="tab-log" onclick="switchTab('log')">Iniciar sesión</button>
+      </div>
+      <div id="form-reg">
+        <div class="auth-field"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+        <div class="auth-field"><label>Email</label><input type="email" placeholder="vos@tutienda.com"></div>
+        <div class="auth-field"><label>Contraseña</label><input type="password" placeholder="Mínimo 8 caracteres"></div>
+        <button class="btn-green-full" onclick="go('dash')">Crear cuenta gratis →</button>
+        <div class="auth-divider">o</div>
+        <button class="btn-outline-full">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continuar con Google
+        </button>
+      </div>
+      <div id="form-log" style="display:none">
+        <div class="auth-field"><label>Email</label><input type="email" placeholder="vos@tutienda.com"></div>
+        <div class="auth-field"><label>Contraseña</label><input type="password" placeholder="Tu contraseña"></div>
+        <div style="text-align:right;margin-bottom:12px"><a href="#" style="font-size:12px;color:var(--p);font-weight:600">¿Olvidaste tu contraseña?</a></div>
+        <button class="btn-green-full" onclick="go('dash')">Ingresar →</button>
+        <div class="auth-divider">o</div>
+        <button class="btn-outline-full">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continuar con Google
+        </button>
+      </div>
+    </div>
+    <p class="auth-legal">Sin tarjeta de crédito · Cancelás cuando querés</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  DASHBOARD                                -->
+<!-- ══════════════════════════════════════════ -->
+<div id="s-dash" class="screen" style="flex-direction:column">
+  <div class="app-header">
+    <div class="app-logo" onclick="go('landing')">
+      <div class="app-logo-icon">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+          <polyline points="0,6 2.5,6 4,1 6.5,11 9,0 11.5,9.5 13.5,3.5 15.5,6 18,6" stroke="#080B12" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="app-logo-name">pulso</span>
+    </div>
+    <div class="app-nav">
+      <div class="app-nav-item on">Dashboard</div>
+      <div class="app-nav-item" onclick="go('integ')">Integraciones</div>
+      <div class="app-nav-item">Órdenes</div>
+      <div class="app-nav-item">Ads</div>
+      <div class="app-nav-item">Equipo</div>
+    </div>
+    <div class="app-right">
+      <i class="ti ti-bell" style="font-size:20px;color:#9ca3af;cursor:pointer"></i>
+      <div class="app-avatar">SH</div>
+    </div>
+  </div>
+  <div class="dash-main">
+    <div class="dash-top">
+      <div>
+        <div class="dash-greeting">Buen día, Sebas 👋</div>
+        <div class="dash-date">Martes 6 de mayo, 2025</div>
+      </div>
+      <div class="dash-period">
+        <button class="period-btn">Hoy</button>
+        <button class="period-btn on">7 días</button>
+        <button class="period-btn">30 días</button>
+        <button class="period-btn">Este mes</button>
+      </div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label">Contribución neta</div>
+        <div class="kpi-val">$84.320</div>
+        <div class="kpi-change up">▲ 12,4% vs semana anterior</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Ventas totales</div>
+        <div class="kpi-val">$312.450</div>
+        <div class="kpi-change up">▲ 8,1%</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">ROAS</div>
+        <div class="kpi-val">×3.8</div>
+        <div class="kpi-change down">▼ 0,2 vs anterior</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Órdenes</div>
+        <div class="kpi-val">247</div>
+        <div class="kpi-change up">▲ 31 nuevas hoy</div>
+      </div>
+    </div>
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-title">Ventas diarias — últimos 7 días</div>
+        <div class="chart-area" id="bar-chart"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Ventas por canal</div>
+        <div class="donut-wrap">
+          <div class="donut-row">
+            <div class="donut-dot" style="background:#22c997"></div>
+            <span class="donut-lbl">Shopify</span>
+            <span class="donut-pct">54%</span>
+          </div>
+          <div class="donut-row">
+            <div class="donut-dot" style="background:#1c2333"></div>
+            <span class="donut-lbl">TiendaNube</span>
+            <span class="donut-pct">31%</span>
+          </div>
+          <div class="donut-row">
+            <div class="donut-dot" style="background:#f59e0b"></div>
+            <span class="donut-lbl">MercadoPago</span>
+            <span class="donut-pct">15%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="orders-card">
+      <div class="orders-title">Últimas órdenes <span>Ver todas →</span></div>
+      <div class="order-row">
+        <span class="order-id">#10481</span>
+        <span class="order-name">María González</span>
+        <span class="order-store">Shopify · AR</span>
+        <span class="order-amt">$6.800</span>
+        <span class="order-status status-ok">Pagado</span>
+      </div>
+      <div class="order-row">
+        <span class="order-id">#10480</span>
+        <span class="order-name">Lucas Fernández</span>
+        <span class="order-store">TiendaNube</span>
+        <span class="order-amt">$12.400</span>
+        <span class="order-status status-ok">Pagado</span>
+      </div>
+      <div class="order-row">
+        <span class="order-id">#10479</span>
+        <span class="order-name">Valentina Ríos</span>
+        <span class="order-store">Shopify · UY</span>
+        <span class="order-amt">$4.200</span>
+        <span class="order-status status-pend">Pendiente</span>
+      </div>
+      <div class="order-row">
+        <span class="order-id">#10478</span>
+        <span class="order-name">Tomás Acosta</span>
+        <span class="order-store">Shopify · AR</span>
+        <span class="order-amt">$9.100</span>
+        <span class="order-status status-ok">Pagado</span>
+      </div>
+      <div class="order-row">
+        <span class="order-id">#10477</span>
+        <span class="order-name">Camila Morales</span>
+        <span class="order-store">TiendaNube</span>
+        <span class="order-amt">$7.650</span>
+        <span class="order-status status-ok">Pagado</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  INTEGRACIONES                            -->
+<!-- ══════════════════════════════════════════ -->
+<div id="s-integ" class="screen" style="flex-direction:column">
+  <div class="app-header">
+    <div class="app-logo" onclick="go('landing')">
+      <div class="app-logo-icon">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+          <polyline points="0,6 2.5,6 4,1 6.5,11 9,0 11.5,9.5 13.5,3.5 15.5,6 18,6" stroke="#080B12" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="app-logo-name">pulso</span>
+    </div>
+    <div class="app-nav">
+      <div class="app-nav-item" onclick="go('dash')">Dashboard</div>
+      <div class="app-nav-item on">Integraciones</div>
+      <div class="app-nav-item">Órdenes</div>
+      <div class="app-nav-item">Ads</div>
+      <div class="app-nav-item">Equipo</div>
+    </div>
+    <div class="app-right">
+      <i class="ti ti-bell" style="font-size:20px;color:#9ca3af;cursor:pointer"></i>
+      <div class="app-avatar">SH</div>
+    </div>
+  </div>
+  <div class="integ-body">
+    <div class="integ-header">
+      <div class="integ-title">Integraciones</div>
+      <div class="integ-sub">Conectá tus tiendas y cuentas. Los datos se sincronizan automáticamente.</div>
+    </div>
+    <div class="integ-grid">
+      <div class="integ-card connected">
+        <div class="integ-card-top">
+          <div class="integ-icon" style="background:#f0fdf4;color:#22c997">SH</div>
+          <div>
+            <div class="integ-name">Shopify</div>
+            <div class="integ-desc">Órdenes, productos y clientes</div>
+          </div>
+          <div class="integ-badge badge-on"><i class="ti ti-check" style="font-size:10px"></i> Conectado</div>
+        </div>
+        <div class="integ-meta">Tienda: <strong>mitienda.myshopify.com</strong> · Última sync: hace 2 min</div>
+        <div class="integ-actions">
+          <button class="btn-connect btn-connect-green">+ Agregar tienda</button>
+          <button class="btn-disconnect">Desconectar</button>
+        </div>
+      </div>
+      <div class="integ-card connected">
+        <div class="integ-card-top">
+          <div class="integ-icon" style="background:#eef2ff;color:#4f46e5">TN</div>
+          <div>
+            <div class="integ-name">TiendaNube</div>
+            <div class="integ-desc">Órdenes y catálogo</div>
+          </div>
+          <div class="integ-badge badge-on"><i class="ti ti-check" style="font-size:10px"></i> Conectado</div>
+        </div>
+        <div class="integ-meta">Tienda: <strong>mitienda.mitiendanube.com</strong> · Última sync: hace 5 min</div>
+        <div class="integ-actions">
+          <button class="btn-connect btn-connect-green">+ Agregar tienda</button>
+          <button class="btn-disconnect">Desconectar</button>
+        </div>
+      </div>
+      <div class="integ-card connected">
+        <div class="integ-card-top">
+          <div class="integ-icon" style="background:#eff6ff;color:#2563eb">MP</div>
+          <div>
+            <div class="integ-name">MercadoPago</div>
+            <div class="integ-desc">Pagos y conciliación</div>
+          </div>
+          <div class="integ-badge badge-on"><i class="ti ti-check" style="font-size:10px"></i> Conectado</div>
+        </div>
+        <div class="integ-meta">Cuenta: <strong>ventas@mitienda.com</strong> · Token expira en 6 meses</div>
+        <div class="integ-actions">
+          <button class="btn-connect btn-connect-green">+ Agregar cuenta</button>
+          <button class="btn-disconnect">Desconectar</button>
+        </div>
+      </div>
+      <div class="integ-card">
+        <div class="integ-card-top">
+          <div class="integ-icon" style="background:#eff6ff;color:#1877f2">FB</div>
+          <div>
+            <div class="integ-name">Meta Ads</div>
+            <div class="integ-desc">Facebook e Instagram Ads</div>
+          </div>
+          <div class="integ-badge badge-off">Sin conectar</div>
+        </div>
+        <div class="integ-meta" style="color:#9ca3af">Conectá tu cuenta para ver ROAS y gasto en ads automáticamente en tu dashboard.</div>
+        <div class="integ-actions">
+          <button class="btn-connect btn-connect-green">Conectar Meta →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  PLANES                                   -->
+<!-- ══════════════════════════════════════════ -->
+<div id="s-plans" class="screen" style="flex-direction:column">
+  <div class="app-header">
+    <div class="app-logo" onclick="go('landing')">
+      <div class="app-logo-icon">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+          <polyline points="0,6 2.5,6 4,1 6.5,11 9,0 11.5,9.5 13.5,3.5 15.5,6 18,6" stroke="#080B12" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="app-logo-name">pulso</span>
+    </div>
+    <div class="app-nav">
+      <div class="app-nav-item" onclick="go('dash')">Dashboard</div>
+      <div class="app-nav-item" onclick="go('integ')">Integraciones</div>
+      <div class="app-nav-item">Órdenes</div>
+      <div class="app-nav-item">Ads</div>
+      <div class="app-nav-item">Equipo</div>
+    </div>
+    <div class="app-right">
+      <i class="ti ti-bell" style="font-size:20px;color:#9ca3af;cursor:pointer"></i>
+      <div class="app-avatar">SH</div>
+    </div>
+  </div>
+  <div class="plans-body">
+    <div class="plans-header">
+      <div class="plans-title">Elegí tu plan</div>
+      <div class="plans-sub">Sin permanencia. Cambiás o cancelás cuando querés.</div>
+      <div class="plans-toggle">
+        <span class="toggle-label">Mensual</span>
+        <div class="toggle-track" id="billing-toggle" onclick="toggleBilling()">
+          <div class="toggle-thumb"></div>
+        </div>
+        <span class="toggle-label on">Anual <span class="save-badge">−20%</span></span>
+      </div>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0</div>
+        <div class="plan-period">para siempre</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feat"><i class="ti ti-check"></i>1 tienda conectada</div>
+          <div class="plan-feat"><i class="ti ti-check"></i>Hasta 100 órdenes/mes</div>
+          <div class="plan-feat"><i class="ti ti-check"></i>Dashboard básico</div>
+          <div class="plan-feat no"><i class="ti ti-x"></i>ROAS y Meta Ads</div>
+          <div class="plan-feat no"><i class="ti ti-x"></i>Equipo y roles</div>
+          <div class="plan-feat no"><i class="ti ti-x"></i>Exportación de datos</div>
+        </div>
+        <button class="btn-plan-outline">Plan actual</button>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-pop-badge">Más popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price" id="price-pro">USD 23</div>
+        <div class="plan-period" id="period-pro">/ mes · facturación anual</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feat"><i class="ti ti-check"></i>Hasta 3 tiendas</div>
+          <div class="plan-feat"><i class="ti ti-check"></i>Órdenes ilimitadas</div>
+          <div class="plan-feat"><i class="ti ti-check"></i>ROAS y Meta Ads</div>
+          <div class="plan-feat"><i class="ti ti-check"></i>2 usuarios del equipo</div>
+          <div class="plan-feat"><i class="ti ti-check"></i>Exportación CSV</div>
+          <div class="plan-feat no"><i class="ti ti-x"></i>Soporte prioritario</div>
+        </div>
+        <button class="btn-plan btn-plan-green">Empezar con Pro →</button>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Business</div>
+        <div class="plan-price" id="price-biz">USD 79</div>
+        <div class="plan-period" id="period-biz">/ mes · facturación anual</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feat"><i class="ti ti-check"></i>Tiendas ilimitadas</div>
+          <div class="plan-feat"><i class="ti ti-check"></i>Órdenes ilimitadas</div>
+          <div class="plan-feat"><i class="ti ti-check"></i>ROAS y Meta Ads</div>
+          <div class="plan-feat"><i class="ti ti-check"></i>Equipo ilimitado</div>
+          <div class="plan-feat"><i class="ti ti-check"></i>API access</div>
+          <div class="plan-feat"><i class="ti ti-check"></i>Soporte prioritario</div>
+        </div>
+        <button class="btn-plan btn-plan-green">Empezar con Business →</button>
+      </div>
+    </div>
+    <div class="plans-faq">
+      <div class="faq-title">Preguntas frecuentes</div>
+      <div class="faq-row" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Puedo cambiar de plan después? <i class="ti ti-chevron-down" style="font-size:14px"></i></div>
+        <div class="faq-a" style="display:none">Sí, podés cambiar o cancelar tu plan en cualquier momento desde la configuración de tu cuenta. Si bajás de plan, el cambio se aplica al próximo ciclo de facturación.</div>
+      </div>
+      <div class="faq-row" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Cómo funciona el plan gratuito? <i class="ti ti-chevron-down" style="font-size:14px"></i></div>
+        <div class="faq-a" style="display:none">El plan Free no tiene vencimiento. Podés usarlo siempre con 1 tienda y hasta 100 órdenes mensuales, sin ingresar ninguna tarjeta.</div>
+      </div>
+      <div class="faq-row" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Dónde están mis datos? <i class="ti ti-chevron-down" style="font-size:14px"></i></div>
+        <div class="faq-a" style="display:none">En servidores en Latinoamérica. Todos los tokens se encriptan con AES-256-GCM. No compartimos datos con terceros ni los usamos para entrenamiento.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const screens = {landing:'s-landing',auth:'s-auth',dash:'s-dash',integ:'s-integ',plans:'s-plans'};
+const pillIdx = {landing:0,auth:1,dash:2,integ:3,plans:4};
+let barsBuilt = false;
+let annualBilling = true;
+
+function go(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(screens[name]).classList.add('active');
+  document.querySelectorAll('.nav-pill').forEach((p,i) => p.classList.toggle('on', i === pillIdx[name]));
+  if (name === 'dash' && !barsBuilt) { buildBars(); barsBuilt = true; }
+  window.scrollTo(0, 0);
+}
+
+function switchTab(t) {
+  document.getElementById('tab-reg').classList.toggle('on', t === 'reg');
+  document.getElementById('tab-log').classList.toggle('on', t === 'log');
+  document.getElementById('form-reg').style.display = t === 'reg' ? 'block' : 'none';
+  document.getElementById('form-log').style.display = t === 'log' ? 'block' : 'none';
+}
+
+function buildBars() {
+  const c = document.getElementById('bar-chart');
+  if (!c) return;
+  const vals = [38, 52, 44, 61, 58, 72, 84];
+  const days = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+  const mx = Math.max(...vals);
+  vals.forEach((v, i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'bar-wrap';
+    const bar = document.createElement('div');
+    bar.className = 'bar' + (i === 6 ? ' hi' : '');
+    bar.style.height = Math.round((v / mx) * 100) + '%';
+    bar.title = '$' + v + 'K';
+    const lbl = document.createElement('div');
+    lbl.className = 'bar-lbl';
+    lbl.textContent = days[i];
+    wrap.appendChild(bar);
+    wrap.appendChild(lbl);
+    c.appendChild(wrap);
+  });
+}
+
+function toggleBilling() {
+  annualBilling = !annualBilling;
+  const track = document.getElementById('billing-toggle');
+  track.classList.toggle('off', !annualBilling);
+  document.getElementById('price-pro').textContent = annualBilling ? 'USD 23' : 'USD 29';
+  document.getElementById('period-pro').textContent = annualBilling ? '/ mes · facturación anual' : '/ mes · facturación mensual';
+  document.getElementById('price-biz').textContent = annualBilling ? 'USD 79' : 'USD 99';
+  document.getElementById('period-biz').textContent = annualBilling ? '/ mes · facturación anual' : '/ mes · facturación mensual';
+}
+
+function toggleFaq(row) {
+  const a = row.querySelector('.faq-a');
+  a.style.display = a.style.display === 'none' ? 'block' : 'none';
+}
+</script>
+</body>
+</html>
